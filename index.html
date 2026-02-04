@@ -4,39 +4,125 @@
   <meta charset="UTF-8">
   <title>OG $MOLTY</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+
   <style>
     body {
-      background: #0b0b0b;
-      color: #fff;
-      font-family: Arial, sans-serif;
+      margin: 0;
+      background: radial-gradient(circle at top, #0f2027, #000);
+      color: #ffffff;
+      font-family: 'Inter', Arial, sans-serif;
       text-align: center;
-      padding: 60px;
+      padding: 60px 20px;
     }
-    .box {
-      border: 1px solid #333;
-      padding: 30px;
-      max-width: 600px;
+
+    .container {
+      max-width: 720px;
       margin: auto;
+      background: rgba(0,0,0,0.65);
+      border-radius: 20px;
+      padding: 50px 30px;
+      border: 1px solid rgba(255,255,255,0.15);
+      box-shadow: 0 0 50px rgba(0,255,156,0.15);
+      backdrop-filter: blur(12px);
     }
+
+    h1 {
+      font-size: 48px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      opacity: 0.75;
+      margin-bottom: 40px;
+    }
+
+    .burn-title {
+      font-size: 18px;
+      opacity: 0.7;
+      letter-spacing: 1px;
+    }
+
     .burn {
-      font-size: 26px;
-      margin-top: 20px;
+      font-size: 44px;
+      font-weight: 700;
       color: #00ff9c;
+      margin: 15px 0;
+      text-shadow: 0 0 25px rgba(0,255,156,0.9);
+    }
+
+    .info {
+      margin-top: 40px;
+      font-size: 15px;
+      opacity: 0.8;
+      line-height: 1.7;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      margin: 40px 0;
+    }
+
+    .links a {
+      color: #00ff9c;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0 10px;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 12px;
+      opacity: 0.5;
     }
   </style>
 </head>
 <body>
 
-  <div class="box">
+  <div class="container">
     <h1>OG $MOLTY</h1>
-    <p>Community-driven Solana meme token</p>
+    <div class="subtitle">
+      Community-driven Solana meme token
+    </div>
 
-    <h2>Total Burned</h2>
+    <div class="burn-title">TOTAL BURNED</div>
     <div class="burn" id="burned">Loading...</div>
 
-    <p style="font-size:12px;margin-top:20px;">
-      Data fetched directly from Solana blockchain
-    </p>
+    <div class="info">
+      One Molty. One community. One chain.<br>
+      No rebrands. No copies. No shortcuts.
+    </div>
+
+    <hr>
+
+    <div class="info">
+      🔥 Burn wallet is public and verifiable<br>
+      🧬 OG revival powered by the community<br>
+      🪙 Built on Solana, driven by memes
+    </div>
+
+    <div class="links" style="margin-top:25px;">
+      <a href="https://solscan.io/account/98hoibmCHf9wEBik4wPc9Ja9n4Uqo9npwzLEdSuGLmZg" target="_blank">
+        View Burn on Solscan
+      </a>
+      •
+      <a href="https://x.com" target="_blank">
+        Follow on X
+      </a>
+    </div>
+
+    <div class="footer">
+      Data fetched live from Solana blockchain
+    </div>
   </div>
 
 <script>
