@@ -55,6 +55,40 @@
       text-shadow: 0 0 25px rgba(0,255,156,0.9);
     }
 
+    .progress-wrapper {
+      margin: 30px auto 0;
+      max-width: 420px;
+      text-align: left;
+    }
+
+    .progress-label {
+      font-size: 14px;
+      margin-bottom: 6px;
+      color: #aaa;
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 14px;
+      background: #1f1f1f;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #00ffa3, #00c2ff);
+      transition: width 0.8s ease;
+    }
+
+    .progress-supply {
+      margin-top: 6px;
+      font-size: 12px;
+      color: #666;
+      text-align: right;
+    }
+
     .info {
       margin-top: 40px;
       font-size: 15px;
@@ -97,6 +131,20 @@
     <div class="burn-title">TOTAL BURNED</div>
     <div class="burn" id="burned">Loading...</div>
 
+    <div class="progress-wrapper">
+      <div class="progress-label">
+        Burned: <span id="burnPercent">0%</span> of total supply
+      </div>
+
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressFill"></div>
+      </div>
+
+      <div class="progress-supply">
+        Max Supply: 1,000,000,000 MOLTY
+      </div>
+    </div>
+
     <div class="info">
       One Molty. One community. One chain.<br>
       No rebrands. No copies. No shortcuts.
@@ -116,7 +164,7 @@
       </a>
       •
       <a href="https://x.com/moltyonbags?s=21" target="_blank">
-        Follow on X
+        Follow @moltyonbags on X
       </a>
     </div>
 
@@ -128,6 +176,7 @@
 <script>
 const HELIUS_API_KEY = "e179c020-bd4b-49d6-8974-3d40ef6479ff";
 const BURN_TOKEN_ACCOUNT = "98hoibmCHf9wEBik4wPc9Ja9n4Uqo9npwzLEdSuGLmZg";
+const MAX_SUPPLY = 1_000_000_000;
 
 fetch(`https://mainnet.helius-rpc.com/?api-key=${HELIUS_API_KEY}`, {
   method: "POST",
@@ -141,9 +190,18 @@ fetch(`https://mainnet.helius-rpc.com/?api-key=${HELIUS_API_KEY}`, {
 })
 .then(res => res.json())
 .then(data => {
-  const burned = data.result.value.uiAmount;
+  const burnedAmount = data.result.value.uiAmount;
+
   document.getElementById("burned").innerText =
-    burned.toLocaleString() + " MOLTY";
+    burnedAmount.toLocaleString() + " MOLTY";
+
+  const percent = (burnedAmount / MAX_SUPPLY) * 100;
+
+  document.getElementById("burnPercent").innerText =
+    percent.toFixed(2) + "%";
+
+  document.getElementById("progressFill").style.width =
+    Math.min(percent, 100) + "%";
 })
 .catch(() => {
   document.getElementById("burned").innerText = "Error loading data";
