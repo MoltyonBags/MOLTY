@@ -1,219 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>OG $MOLTY</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<title>OG $MOLTY</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: radial-gradient(circle at top, #1b2b2f, #0b0f14);
+  color: #e6f1f3;
+  display: flex;
+  justify-content: center;
+}
 
-  <style>
-    body {
-      margin: 0;
-      background: radial-gradient(circle at top, #0f2027, #000);
-      color: #fff;
-      font-family: 'Inter', sans-serif;
-      text-align: center;
-      padding: 60px 20px;
-    }
+.container {
+  max-width: 720px;
+  padding: 80px 20px;
+  text-align: center;
+}
 
-    .container {
-      max-width: 760px;
-      margin: auto;
-      background: rgba(0,0,0,0.65);
-      border-radius: 20px;
-      padding: 50px 30px;
-      border: 1px solid rgba(255,255,255,0.15);
-      box-shadow: 0 0 50px rgba(0,255,156,0.15);
-      backdrop-filter: blur(12px);
-    }
+h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
 
-    h1 {
-      font-size: 46px;
-      font-weight: 900;
-      letter-spacing: 2px;
-    }
+.subtitle {
+  opacity: 0.8;
+  margin-bottom: 40px;
+}
 
-    .subtitle {
-      opacity: 0.75;
-      margin-bottom: 40px;
-    }
+.burn-box {
+  background: rgba(255,255,255,0.04);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 0 40px rgba(0,255,200,0.12);
+}
 
-    .burn-title {
-      font-size: 18px;
-      opacity: 0.7;
-    }
+.burn-amount {
+  font-size: 40px;
+  font-weight: 800;
+  color: #49ffd2;
+  margin: 10px 0;
+}
 
-    .burn {
-      font-size: 42px;
-      font-weight: 700;
-      color: #00ff9c;
-      margin: 15px 0;
-      text-shadow: 0 0 25px rgba(0,255,156,0.9);
-    }
+.progress {
+  height: 10px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 14px 0;
+}
 
-    .progress-wrapper {
-      margin: 30px auto 0;
-      max-width: 420px;
-      text-align: left;
-    }
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg,#49ffd2,#00ffc8);
+  width: 0%;
+}
 
-    .progress-label {
-      font-size: 14px;
-      margin-bottom: 6px;
-      color: #aaa;
-    }
+.small {
+  font-size: 13px;
+  opacity: 0.7;
+}
 
-    .progress-bg {
-      width: 100%;
-      height: 14px;
-      background: #1f1f1f;
-      border-radius: 8px;
-      overflow: hidden;
-    }
+.links {
+  margin-top: 30px;
+}
 
-    .progress-fill {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, #00ffa3, #00c2ff);
-      transition: width 0.8s ease;
-    }
+.links a {
+  color: #49ffd2;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: 600;
+}
 
-    .progress-supply {
-      margin-top: 6px;
-      font-size: 12px;
-      color: #666;
-      text-align: right;
-    }
+.links a:hover {
+  text-decoration: underline;
+}
 
-    .info {
-      margin-top: 35px;
-      font-size: 15px;
-      opacity: 0.8;
-      line-height: 1.7;
-    }
+.history {
+  margin-top: 40px;
+  text-align: left;
+}
 
-    hr {
-      border: none;
-      border-top: 1px solid rgba(255,255,255,0.15);
-      margin: 40px 0;
-    }
+.history h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
 
-    .links a {
-      color: #00ff9c;
-      text-decoration: none;
-      font-weight: 600;
-      margin: 0 12px;
-    }
+.history ul {
+  list-style: none;
+  padding: 0;
+}
 
-    .links a:hover {
-      text-decoration: underline;
-    }
+.history li {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  font-size: 14px;
+}
 
-    .embed {
-      margin-top: 40px;
-      display: flex;
-      justify-content: center;
-    }
+.history a {
+  color: #49ffd2;
+  text-decoration: none;
+}
 
-    .footer {
-      margin-top: 30px;
-      font-size: 12px;
-      opacity: 0.5;
-    }
-  </style>
+footer {
+  margin-top: 40px;
+  font-size: 12px;
+  opacity: 0.5;
+}
+</style>
 </head>
 
 <body>
 <div class="container">
 
-  <h1>OG $MOLTY</h1>
-  <div class="subtitle">Community-driven Solana meme token</div>
+<h1>OG $MOLTY</h1>
+<div class="subtitle">Community-driven Solana meme token</div>
 
-  <div class="burn-title">TOTAL BURNED</div>
-  <div class="burn" id="burned">Loading…</div>
+<div class="burn-box">
+  <div class="small">TOTAL BURNED</div>
+  <div id="burned" class="burn-amount">Loading...</div>
 
-  <div class="progress-wrapper">
-    <div class="progress-label">
-      Burned: <span id="burnPercent">0%</span> of total supply
-    </div>
-
-    <div class="progress-bg">
-      <div class="progress-fill" id="progressFill"></div>
-    </div>
-
-    <div class="progress-supply">
-      Initial Supply: 1,000,000,000 MOLTY
-    </div>
+  <div class="progress">
+    <div id="progressFill" class="progress-fill"></div>
   </div>
 
-  <div class="info">
+  <div id="percent" class="small"></div>
+  <div class="small">Initial Supply: 1,000,000,000 MOLTY</div>
+
+  <p class="small" style="margin-top:20px">
     One Molty. One community. One chain.<br>
     No rebrands. No copies. No shortcuts.
-  </div>
+  </p>
+</div>
 
-  <hr>
+<div class="links">
+  <a href="https://x.com/moltyonbags?s=21" target="_blank">Follow on X</a>
+  ·
+  <a href="https://t.me/MoltyBAGS" target="_blank">Join Telegram</a>
+  ·
+  <a href="https://solscan.io/token/8UdvUKTaWB6DcrbJtfiXeiJnKeJ9fd2tc4i9SV4kBAGS" target="_blank">View on Solscan</a>
+</div>
 
-  <!-- LINKS -->
-  <div class="links">
-    <a href="https://x.com/moltyonbags?s=21" target="_blank">Follow on X</a>
-    •
-    <a href="https://t.me/MoltyBAGS" target="_blank">Join Telegram</a>
-    •
-    <a href="https://solscan.io/token/8UdvUKTaWB6DcrbJtfiXeiJnKeJ9fd2tc4i9SV4kBAGS" target="_blank">
-      View on Solscan
-    </a>
-  </div>
+<div class="history">
+  <h3>🔥 Last 5 Burns</h3>
+  <ul id="burnHistory">
+    <li>Loading burn history...</li>
+  </ul>
+</div>
 
-  <!-- X PROFILE EMBED -->
-  <div class="embed">
-    <blockquote class="twitter-timeline" data-theme="dark" data-height="520">
-      <a href="https://x.com/moltyonbags?s=21"></a>
-    </blockquote>
-  </div>
-
-  <div class="footer">
-    Burn calculated from live Solana token supply
-  </div>
+<footer>
+  Burn calculated from Solana on-chain data
+</footer>
 
 </div>
 
 <script>
-const HELIUS_API_KEY = "e179c020-bd4b-49d6-8974-3d40ef6479ff";
-const TOKEN_MINT_ADDRESS = "8UdvUKTaWB6DcrbJtfiXeiJnKeJ9fd2tc4i9SV4kBAGS";
-const INITIAL_SUPPLY = 1_000_000_000;
+const TOKEN_MINT = "8UdvUKTaWB6DcrbJtfiXeiJnKeJ9fd2tc4i9SV4kBAGS";
+const BURN_ADDRESS = "11111111111111111111111111111111";
+const MAX_SUPPLY = 1_000_000_000;
 
-fetch(`https://mainnet.helius-rpc.com/?api-key=${HELIUS_API_KEY}`, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    jsonrpc: "2.0",
-    id: 1,
-    method: "getTokenSupply",
-    params: [TOKEN_MINT_ADDRESS]
-  })
-})
-.then(res => res.json())
-.then(data => {
-  const currentSupply = data.result.value.uiAmount;
-  const burned = INITIAL_SUPPLY - currentSupply;
-  const percent = (burned / INITIAL_SUPPLY) * 100;
+async function loadBurnData() {
+  const supplyRes = await fetch(`https://public-api.solscan.io/token/meta?tokenAddress=${TOKEN_MINT}`);
+  const supplyData = await supplyRes.json();
 
-  document.getElementById("burned").innerText =
-    burned.toLocaleString() + " MOLTY";
+  const currentSupply = supplyData.supply / 10 ** supplyData.decimals;
+  const burned = MAX_SUPPLY - currentSupply;
+  const percent = (burned / MAX_SUPPLY) * 100;
 
-  document.getElementById("burnPercent").innerText =
-    percent.toFixed(2) + "%";
-
+  document.getElementById("burned").textContent =
+    burned.toLocaleString("en-US") + " MOLTY";
+  document.getElementById("percent").textContent =
+    `Burned: ${percent.toFixed(2)}%`;
   document.getElementById("progressFill").style.width =
-    Math.max(0, percent) + "%";
-})
-.catch(() => {
-  document.getElementById("burned").innerText = "Error loading supply";
-});
-</script>
+    percent.toFixed(2) + "%";
+}
 
-<script async src="https://platform.twitter.com/widgets.js"></script>
+async function loadBurnHistory() {
+  const res = await fetch(
+    `https://public-api.solscan.io/account/token/txs?account=${BURN_ADDRESS}&limit=5`
+  );
+  const data = await res.json();
+
+  const list = document.getElementById("burnHistory");
+  list.innerHTML = "";
+
+  data.forEach(tx => {
+    const amount = (tx.changeAmount / 10 ** tx.decimals).toLocaleString();
+    const date = new Date(tx.blockTime * 1000).toLocaleDateString();
+    const link = `https://solscan.io/tx/${tx.txHash}`;
+
+    const li = document.createElement("li");
+    li.innerHTML = `🔥 ${amount} MOLTY — ${date} —
+      <a href="${link}" target="_blank">view</a>`;
+    list.appendChild(li);
+  });
+}
+
+loadBurnData();
+loadBurnHistory();
+</script>
 
 </body>
 </html>
