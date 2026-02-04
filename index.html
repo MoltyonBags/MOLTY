@@ -18,7 +18,7 @@
     }
 
     .container {
-      max-width: 720px;
+      max-width: 760px;
       margin: auto;
       background: rgba(0,0,0,0.65);
       border-radius: 20px;
@@ -103,11 +103,17 @@
       color: #00ff9c;
       text-decoration: none;
       font-weight: 600;
-      margin: 0 10px;
+      margin: 0 12px;
     }
 
     .links a:hover {
       text-decoration: underline;
+    }
+
+    .embed {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
     }
 
     .footer {
@@ -148,10 +154,22 @@
 
   <hr>
 
+  <!-- LINKS -->
   <div class="links">
-    <a href="https://x.com/moltyonbags?s=21" target="_blank">
-      Follow @moltyonbags on X
+    <a href="https://x.com/moltyonbags?s=21" target="_blank">Follow on X</a>
+    •
+    <a href="https://t.me/MoltyBAGS" target="_blank">Join Telegram</a>
+    •
+    <a href="https://solscan.io/token/8UdvUKTaWB6DcrbJtfiXeiJnKeJ9fd2tc4i9SV4kBAGS" target="_blank">
+      View on Solscan
     </a>
+  </div>
+
+  <!-- X PROFILE EMBED -->
+  <div class="embed">
+    <blockquote class="twitter-timeline" data-theme="dark" data-height="520">
+      <a href="https://x.com/moltyonbags?s=21"></a>
+    </blockquote>
   </div>
 
   <div class="footer">
@@ -161,17 +179,9 @@
 </div>
 
 <script>
-/* ================= CONFIG ================= */
-
 const HELIUS_API_KEY = "e179c020-bd4b-49d6-8974-3d40ef6479ff";
-
-/* ✅ TAVA TOKEN MINT ADRESE */
 const TOKEN_MINT_ADDRESS = "8UdvUKTaWB6DcrbJtfiXeiJnKeJ9fd2tc4i9SV4kBAGS";
-
-/* 🔴 PĀRBAUDI, KA ŠIS SAKRĪT AR INITIAL SUPPLY SOLSCAN */
 const INITIAL_SUPPLY = 1_000_000_000;
-
-/* ========================================== */
 
 fetch(`https://mainnet.helius-rpc.com/?api-key=${HELIUS_API_KEY}`, {
   method: "POST",
@@ -202,6 +212,8 @@ fetch(`https://mainnet.helius-rpc.com/?api-key=${HELIUS_API_KEY}`, {
   document.getElementById("burned").innerText = "Error loading supply";
 });
 </script>
+
+<script async src="https://platform.twitter.com/widgets.js"></script>
 
 </body>
 </html>
